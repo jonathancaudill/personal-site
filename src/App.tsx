@@ -17,6 +17,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Analytics } from "@vercel/analytics/react";
 import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
       <SpeedInsights />
       <Analytics />
       <BrowserRouter>
+        <ScrollToTop />
         <SimpleBar style={{ maxHeight: '100vh' }} autoHide={false} forceVisible="y">
           <div className="min-h-screen">
             <Navbar />

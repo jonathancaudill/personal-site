@@ -18,7 +18,7 @@ const Index = () => {
         getAllPosts(),
         getAllProjects()
       ]);
-      setRecentPosts(posts.slice(0, 2));
+      setRecentPosts(posts.slice(0, 3));
       // Sort projects by rank (ascending), unranked last
       const sortedProjects = [...projects].sort((a, b) => {
         if (a.rank === undefined && b.rank === undefined) return 0;
@@ -75,8 +75,8 @@ const Index = () => {
 
           {/* Recent Posts */}
           <div className="mb-16">
-            <h2 className="text-2xl font-bold mb-4 text-white">Recent Posts</h2>
-            <div className="grid gap-8 md:grid-cols-2">
+            <h2 className="text-3xl font-bold mb-8 text-white">Recent Posts</h2>
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {recentPosts.map((post) => (
                 <Link 
                   key={post.slug} 
