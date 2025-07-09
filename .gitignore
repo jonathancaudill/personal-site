@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# SEO Documentation (project-specific)
+SEO_OPTIMIZATION_GUIDE.md
+SEO_CHECKLIST.md

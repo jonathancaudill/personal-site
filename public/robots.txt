@@ -12,3 +12,9 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Sitemap
+Sitemap: https://jonathancaudill.com/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1

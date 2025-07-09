@@ -10,7 +10,8 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "preview": "vite preview",
-    "serve": "node server.js"
+    "serve": "node server.js",
+    "submit-sitemap": "node scripts/submit-sitemap.js"
   },
   "dependencies": {
     "@radix-ui/react-collapsible": "^1.1.0",
@@ -31,6 +32,7 @@
     "lucide-react": "^0.462.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-helmet-async": "^2.0.4",
     "react-router-dom": "^6.26.2",
     "remark": "^15.0.1",
     "remark-breaks": "^4.0.0",
