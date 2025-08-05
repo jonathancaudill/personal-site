@@ -1,6 +1,6 @@
 ---
 title: "AI Dataset Analysis"
-rank: 1
+rank: 2
 description: "Comprehensive analysis of an AI dataset using RLHF (Reinforcement Learning from Human Feedback) methodology"
 technologies: Python, Pandas, NumPy, Matplotlib, RLHF
 image: "/rlhf.webp"

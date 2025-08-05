@@ -1,6 +1,6 @@
 ---
 title: "Personal Website"
-rank: 5
+rank: 6
 description: "A personal website built with React, TypeScript, and Tailwind CSS"
 technologies: React, TypeScript, Tailwind CSS
 image: "/personalsite.webp"

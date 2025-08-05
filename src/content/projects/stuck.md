@@ -1,6 +1,6 @@
 ---
 title: "Stuck"
-rank: 4
+rank: 5
 description: "A full-stack MacOS notes app built with Rust and Tauri"
 technologies: Rust, Tauri, JavaScript
 image: "/assets/stuck-minimal.webp"

@@ -1,6 +1,6 @@
 ---
 title: "Project Tracker"
-rank: 2
+rank: 3
 description: "Simple, elegant project status tracker built in Google Sheets with a JavaScript backend"
 technologies: Spreadsheets, JavaScript
 image: "/project-tracker.webp"

@@ -1,6 +1,6 @@
 ---
 title: "Homelab"
-rank: 3
+rank: 4
 description: "A personal server, running from my apartment"
 technologies: Docker, Linux, Cloudflare
 image: "/homelab.webp"
