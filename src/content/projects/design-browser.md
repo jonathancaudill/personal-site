@@ -1,10 +1,10 @@
 ---
-title: "Pulse"
+title: "Nook"
 rank: 1
 description: "An open-source browser built for designers and productivity enthusiasts"
 technologies: WebKit, SwiftUI, AppKit
 image: "/pulse.png"
-githubUrl: "https://github.com/browsewithpulse/pulse"
+githubUrl: "https://github.com/nook-browser/nook"
 ---
 
 A modern, open-source browser specifically crafted for designers and productivity-focused users. Built on WebKit for maximum efficiency and minimal power consumption.
