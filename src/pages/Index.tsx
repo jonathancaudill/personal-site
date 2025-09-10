@@ -64,9 +64,6 @@ const Index = () => {
                     </AnimatedButton>
                   </div>
                   <div className="flex gap-4">
-                    <AnimatedButton href="/stuck" variant="outline">
-                      Download stuck
-                    </AnimatedButton>
                     <AnimatedButton href="/pdfs/resume.pdf" variant="outline" external>
                       View my resume
                     </AnimatedButton>
