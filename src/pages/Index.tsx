@@ -52,7 +52,7 @@ const Index = () => {
                   <span className="block">Caudill</span>
                 </h1>
                 <p className="text-xl text-gray-300 mb-8 max-w-2xl">
-                  I'm an analyst, writer, and amateur thinker. I'm always working on something new, and you can find a little bit of my work here, or better yet, reaach out.
+                  I'm an analyst, writer, and amateur thinker. I'm always working on something new, and you can find a little bit of my work here, or better yet, reach out.
                 </p>
                 <div className="flex flex-col gap-4">
                   <div className="flex gap-4">
