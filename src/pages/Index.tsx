@@ -51,10 +51,6 @@ const Index = () => {
               <br />
               Caudill
             </h1>
-            <p className="max-w-xl font-serif text-lg leading-relaxed text-muted-foreground">
-              I study systems, write about what I&apos;m learning, and build small things
-              that make life more legible.
-            </p>
             <div className="flex flex-wrap gap-4">
               <AnimatedButton href="/writing">
                 Read some writing
