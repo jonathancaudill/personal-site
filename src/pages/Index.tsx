@@ -5,7 +5,6 @@ import { getAllProjects, Project } from "@/lib/projectMarkdown";
 import ProjectCard from "@/components/ProjectCard";
 import { useEffect, useState } from "react";
 import BlogCard from "@/components/BlogCard";
-import { PdfLink } from "@/components/PdfLink";
 import SEOHead from "@/components/SEOHead";
 
 const Index = () => {
@@ -52,7 +51,10 @@ const Index = () => {
               Caudill
             </h1>
             <div className="flex flex-wrap gap-4">
-              <AnimatedButton href="/writing">
+              <AnimatedButton href="/pdfs/resume.pdf" external>
+                My resume
+              </AnimatedButton>
+              <AnimatedButton href="/writing" variant="outline">
                 Read some writing
               </AnimatedButton>
               <AnimatedButton href="/work" variant="outline">
