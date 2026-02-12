@@ -19,8 +19,12 @@ const config: Config = {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Inter', 'sans-serif'],
-				inter: ['Inter', 'sans-serif'],
+				sans: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+				inter: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+				ui: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+				display: ['"Cormorant Garamond"', 'serif'],
+				serif: ['"Libre Baskerville"', 'serif'],
+				mono: ['"IBM Plex Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',

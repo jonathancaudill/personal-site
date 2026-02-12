@@ -1,6 +1,5 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import GradientBackground from "@/components/GradientBackground";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -15,20 +14,17 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="relative min-h-screen">
-      <GradientBackground />
-      <div className="relative">
-        <div className="container max-w-3xl mx-auto px-4 py-12 pt-24">
-          <div className="text-center">
-            <h1 className="text-6xl font-bold mb-4 text-white">404</h1>
-            <p className="text-xl text-gray-300 mb-8">Oops! Page not found</p>
-            <Link to="/">
-              <Button className="bg-white text-black hover:bg-white/90">
-                Return to Home
-              </Button>
-            </Link>
-          </div>
-        </div>
+    <div className="mx-auto max-w-3xl px-4 py-24 text-center sm:px-6 lg:px-8">
+      <h1 className="font-display text-6xl text-foreground">404</h1>
+      <p className="mt-4 font-serif text-base text-muted-foreground">
+        The page you were looking for has wandered off.
+      </p>
+      <div className="mt-8">
+        <Link to="/">
+          <Button className="rounded-none border border-border bg-foreground px-6 py-2 font-ui text-xs uppercase tracking-[0.22em] text-background hover:bg-foreground/90">
+            Return home
+          </Button>
+        </Link>
       </div>
     </div>
   );

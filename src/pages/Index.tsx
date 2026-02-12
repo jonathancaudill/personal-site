@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { AnimatedButton } from "@/components/ui/animated-button";
-import GradientBackground from "@/components/GradientBackground";
 import { getAllPosts, Post } from "@/lib/blogMarkdown";
 import { getAllProjects, Project } from "@/lib/projectMarkdown";
 import ProjectCard from "@/components/ProjectCard";
@@ -41,73 +40,102 @@ const Index = () => {
         url="/"
         type="profile"
       />
-      <div className="relative min-h-screen">
-        <GradientBackground />
-        <div className="relative">
-          <div className="container max-w-5xl mx-auto px-4 py-12 pt-24 mr-edge flex flex-col items-center">
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-8 mb-16 w-full">
-              <div className="flex-1 text-left">
-                <h1 className="text-7xl md:text-8xl font-black tracking-tighter mb-8 leading-tight text-white">
-                  <span className="block">Hi, I'm Jonathan</span>
-                  <span className="block">Caudill</span>
-                </h1>
-                <p className="text-xl text-gray-300 mb-8 max-w-2xl">
-                  I'm an analyst, writer, and amateur thinker. I'm always working on something new, and you can find a little bit of my work here, or better yet, reach out.
-                </p>
-                <div className="flex flex-col gap-4">
-                  <div className="flex gap-4">
-                    <AnimatedButton href="/work">
-                      Check out my work
-                    </AnimatedButton>
-                    <AnimatedButton href="/writing" variant="outline">
-                      Read my writing
-                    </AnimatedButton>
-                  </div>
-                  <div className="flex gap-4">
-                    <AnimatedButton href="/pdfs/resume.pdf" variant="outline" external>
-                      View my resume
-                    </AnimatedButton>
-                  </div>
-                </div>
-              </div>
-              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white/20">
-                <img
-                  src="/headshot.jpg"
-                  alt="Jonathan Caudill - Analyst, Writer, Thinker"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-
-            {/* Recent Posts */}
-            <div className="mb-16">
-              <h2 className="text-3xl font-bold mb-8 text-white">Recent Posts</h2>
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {recentPosts.map((post) => (
-                  <Link 
-                    key={post.slug} 
-                    to={`/writing/${post.slug}`}
-                    className="group block h-full"
-                  >
-                    <BlogCard post={post} />
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* Featured Projects */}
-            <div>
-              <h2 className="text-3xl font-bold mb-8 text-white">Featured Projects</h2>
-              <div className="grid gap-8 md:grid-cols-2">
-                {featuredProjects.map((project) => (
-                  <Link key={project.slug} to={`/work/${project.slug}`} className="block group">
-                    <ProjectCard project={project} />
-                  </Link>
-                ))}
-              </div>
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <section className="grid gap-10 border-b border-border pb-12 pt-8 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] md:items-end">
+          <div className="space-y-8">
+            <p className="text-xs font-ui uppercase tracking-[0.22em] text-muted-foreground">
+              Analyst · Writer · Amateur thinker
+            </p>
+            <h1 className="font-display text-5xl leading-[1.05] text-foreground sm:text-6xl md:text-7xl">
+              Jonathan
+              <br />
+              Caudill
+            </h1>
+            <p className="max-w-xl font-serif text-lg leading-relaxed text-muted-foreground">
+              I study systems, write about what I&apos;m learning, and build small things
+              that make life more legible.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <AnimatedButton href="/writing">
+                Read some writing
+              </AnimatedButton>
+              <AnimatedButton href="/work" variant="outline">
+                See some work
+              </AnimatedButton>
             </div>
           </div>
-        </div>
+          <div className="flex justify-end md:justify-center">
+            <div className="h-52 w-52 overflow-hidden rounded-full border border-border md:h-64 md:w-64">
+              <img
+                src="/headshot.jpg"
+                alt="Jonathan Caudill"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="grid gap-12 py-12 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1.6fr)]">
+          <div className="space-y-6">
+            <h2 className="font-ui text-xs uppercase tracking-[0.22em] text-muted-foreground">
+              Selected writing
+            </h2>
+            <div className="space-y-6">
+              {recentPosts.map((post) => (
+                <article key={post.slug} className="border-b border-dashed border-border pb-4 last:border-b-0">
+                  <p className="font-ui text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+                    {post.date}
+                  </p>
+                  <Link
+                    to={`/writing/${post.slug}`}
+                    className="mt-1 inline-flex text-lg font-display leading-snug text-foreground hover:underline"
+                  >
+                    {post.title}
+                  </Link>
+                  <p className="mt-2 max-w-md text-sm font-serif text-muted-foreground">
+                    {post.excerpt}
+                  </p>
+                </article>
+              ))}
+            </div>
+            <Link
+              to="/writing"
+              className="font-ui text-xs uppercase tracking-[0.22em] text-primary hover:underline"
+            >
+              View all writing
+            </Link>
+          </div>
+
+          <div className="space-y-6">
+            <h2 className="font-ui text-xs uppercase tracking-[0.22em] text-muted-foreground">
+              Selected work
+            </h2>
+            <div className="space-y-6">
+              {featuredProjects.map((project) => (
+                <article
+                  key={project.slug}
+                  className="flex flex-col gap-2 border-b border-dashed border-border pb-4 last:border-b-0"
+                >
+                  <Link
+                    to={`/work/${project.slug}`}
+                    className="inline-flex text-lg font-display leading-snug text-foreground hover:underline"
+                  >
+                    {project.title}
+                  </Link>
+                  <p className="max-w-md text-sm font-serif text-muted-foreground">
+                    {project.description}
+                  </p>
+                </article>
+              ))}
+            </div>
+            <Link
+              to="/work"
+              className="font-ui text-xs uppercase tracking-[0.22em] text-primary hover:underline"
+            >
+              View all projects
+            </Link>
+          </div>
+        </section>
       </div>
     </>
   );

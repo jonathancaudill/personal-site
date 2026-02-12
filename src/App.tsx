@@ -32,10 +32,10 @@ const App = () => (
         <Analytics />
         <BrowserRouter>
           <ScrollToTop />
-          <SimpleBar style={{ maxHeight: '100vh' }} autoHide={false} forceVisible="y">
-            <div className="min-h-screen">
+          <SimpleBar style={{ maxHeight: "100vh" }} autoHide={false} forceVisible="y">
+            <div className="min-h-screen bg-background text-foreground">
               <Navbar />
-              <main>
+              <main className="pt-20 pb-16">
                 <Routes>
                   <Route path="/" element={<Index />} />
                   <Route path="/writing" element={<Writing />} />

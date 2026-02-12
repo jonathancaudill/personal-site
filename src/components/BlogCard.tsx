@@ -1,58 +1,36 @@
-import { Link } from "react-router-dom";
 import { Post } from "@/lib/blogMarkdown";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { useState } from "react";
 
 interface BlogCardProps {
   post: Post;
 }
 
 const BlogCard = ({ post }: BlogCardProps) => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    setMousePosition({ x, y });
-  };
-
-  const glowStyle = {
-    '--mouse-x': `${mousePosition.x}px`,
-    '--mouse-y': `${mousePosition.y}px`,
-  } as React.CSSProperties;
-
   return (
     <Card
-      className="group overflow-hidden h-full flex flex-col bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 transition-all duration-300 hover:bg-white/20 relative"
-      onMouseMove={handleMouseMove}
-      style={glowStyle}
+      className="group relative flex h-full flex-col border-border transition-colors hover:bg-muted"
     >
-      <div
-        className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-        style={{
-          background: `radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.15) 0%, transparent 80%)`,
-          transform: `perspective(1000px) rotateX(calc((var(--mouse-y) - 50%) * 0.1deg)) rotateY(calc((var(--mouse-x) - 50%) * 0.1deg))`,
-        }}
-      />
       <CardHeader className="pb-0">
-        <div className="text-sm text-gray-300">{post.date}</div>
-        <Link to={`/writing/${post.slug}`} className="hover:underline">
-          <h3 className="text-xl font-semibold text-white mt-2">{post.title}</h3>
-        </Link>
+        <div className="font-ui text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+          {post.date}
+        </div>
+        <h3 className="mt-2 font-display text-xl leading-snug text-foreground">
+          {post.title}
+        </h3>
       </CardHeader>
       <CardContent className="py-4 flex-grow">
-        <p className="text-gray-300">{post.excerpt}</p>
+        <p className="font-serif text-sm text-muted-foreground">{post.excerpt}</p>
       </CardContent>
       <CardFooter className="pt-0">
-        <Link to={`/writing/${post.slug}`}>
-          <Button variant="ghost" className="p-0 h-auto font-normal text-white hover:text-gray-300 hover:bg-transparent">
-            <span>Read more</span>
-            <ArrowRight size={16} className="ml-1" />
-          </Button>
-        </Link>
+        <Button
+          variant="link"
+          className="p-0 text-xs font-ui uppercase tracking-[0.22em]"
+        >
+          <span>Read more</span>
+          <ArrowRight size={16} className="ml-1" />
+        </Button>
       </CardFooter>
     </Card>
   );

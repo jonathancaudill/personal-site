@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
-import GradientBackground from "@/components/GradientBackground";
 import { getAllProjects, Project } from "@/lib/projectMarkdown";
 import ProjectCard from "@/components/ProjectCard";
 import { Link } from "react-router-dom";
@@ -52,61 +51,64 @@ const Work = () => {
         url="/work"
         type="website"
       />
-      <div className="relative min-h-screen">
-        <GradientBackground />
-        <div className="relative">
-          <div className="container max-w-5xl mx-auto px-4 py-12 pt-24">
-            <h1 className="text-4xl font-bold mb-8 text-white">Jonathan Caudill's Work</h1>
-            <p className="text-gray-300 mb-8">
-              A collection of my projects, contributions, and professional experience.
-            </p>
-
-            {/* Search bar */}
-            <div className="relative mb-8">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-              <Input
-                type="text"
-                placeholder="Search projects..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/50"
-              />
-            </div>
-
-            <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {isLoading ? (
-                <div className="col-span-full text-center text-gray-300">Loading projects...</div>
-              ) : filteredProjects.length > 0 ? (
-                filteredProjects.map((project) => (
-                  <Link key={project.slug} to={`/work/${project.slug}`} className="block group">
-                    <ProjectCard project={project} />
-                  </Link>
-                ))
-              ) : (
-                <div className="col-span-full text-center text-gray-300">
-                  {searchQuery ? 'No projects found matching your search.' : 'No projects available.'}
-                </div>
-              )}
-            </div>
-
-            <div className="mt-16 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 p-6">
-              <h2 className="text-2xl font-semibold text-white">GitHub Contributions</h2>
-              <p className="mt-2 text-gray-300">
-                Check out Jonathan Caudill's open source contributions and other projects on GitHub.
-              </p>
-              <div className="mt-4">
-                <a
-                  href="https://github.com/jonathancaudill"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-indigo-300 hover:text-indigo-200"
-                >
-                  View GitHub Profile →
-                </a>
-              </div>
-            </div>
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <header className="border-b border-border pb-10 pt-4">
+          <p className="text-xs font-ui uppercase tracking-[0.22em] text-muted-foreground">
+            Work
+          </p>
+          <h1 className="mt-3 font-display text-4xl leading-tight text-foreground sm:text-5xl">
+            Projects, products, and tools.
+          </h1>
+          <p className="mt-4 max-w-2xl font-serif text-base leading-relaxed text-muted-foreground">
+            A small selection of things I&apos;ve shipped or am actively working on.
+          </p>
+          <div className="relative mt-6 max-w-md">
+            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <Input
+              type="text"
+              placeholder="Search by title, tech, or description…"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="h-10 rounded-none border-border pl-9 font-ui text-sm"
+            />
           </div>
-        </div>
+        </header>
+
+        <main className="py-10">
+          {isLoading ? (
+            <div className="text-center text-sm text-muted-foreground">Loading projects…</div>
+          ) : filteredProjects.length > 0 ? (
+            <div className="grid gap-8 md:grid-cols-2">
+              {filteredProjects.map((project) => (
+                <Link key={project.slug} to={`/work/${project.slug}`} className="block group">
+                  <ProjectCard project={project} />
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center text-sm text-muted-foreground">
+              {searchQuery ? "No projects found matching your search." : "No projects available."}
+            </div>
+          )}
+
+          <section className="mt-16 border-t border-border pt-8">
+            <h2 className="font-display text-xl text-foreground">GitHub</h2>
+            <p className="mt-2 max-w-xl font-serif text-sm text-muted-foreground">
+              For more experiments, half-finished ideas, and source code, you can wander
+              through my GitHub.
+            </p>
+            <div className="mt-4">
+              <a
+                href="https://github.com/jonathancaudill"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-ui text-xs uppercase tracking-[0.22em] text-primary hover:underline"
+              >
+                View GitHub profile
+              </a>
+            </div>
+          </section>
+        </main>
       </div>
     </>
   );

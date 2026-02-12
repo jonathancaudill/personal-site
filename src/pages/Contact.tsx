@@ -1,23 +1,8 @@
 import { Mail, Phone, MessageSquare, Github, Linkedin } from "lucide-react";
-import GradientBackground from "@/components/GradientBackground";
 import { useState } from "react";
 import SEOHead from "@/components/SEOHead";
 
 const Contact = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    setMousePosition({ x, y });
-  };
-
-  const glowStyle = {
-    '--mouse-x': `${mousePosition.x}px`,
-    '--mouse-y': `${mousePosition.y}px`,
-  } as React.CSSProperties;
-
   return (
     <>
       <SEOHead 
@@ -27,117 +12,84 @@ const Contact = () => {
         url="/contact"
         type="profile"
       />
-      <div className="relative min-h-screen">
-        <GradientBackground />
-        <div className="relative">
-          <div className="container max-w-5xl mx-auto px-4 py-12 pt-24">
-            <h1 className="text-4xl font-bold mb-8 text-white">Contact Jonathan Caudill</h1>
-            <p className="text-gray-300 mb-12 text-lg">
-              Have a question or want to chat? Feel free to reach out to Jonathan Caudill!
-            </p>
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <header className="border-b border-border pb-8 pt-4">
+          <p className="text-xs font-ui uppercase tracking-[0.22em] text-muted-foreground">
+            Contact
+          </p>
+          <h1 className="mt-3 font-display text-4xl leading-tight text-foreground sm:text-5xl">
+            Say hello.
+          </h1>
+        </header>
 
-            <div className="max-w-2xl space-y-8">
-              <a 
-                href="mailto:jonathan.s.caudill@gmail.com"
-                className="block group relative"
-                onMouseMove={handleMouseMove}
-                style={glowStyle}
-              >
-                <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                  style={{
-                    background: `radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.15) 0%, transparent 80%)`,
-                    transform: `perspective(1000px) rotateX(calc((var(--mouse-y) - 50%) * 0.1deg)) rotateY(calc((var(--mouse-x) - 50%) * 0.1deg))`,
-                  }}
-                />
-                <div className="relative bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 p-6 transition-all duration-300 hover:bg-white/20">
-                  <div className="flex items-center gap-4 mb-4">
-                    <Mail className="w-6 h-6 text-white" />
-                    <h2 className="text-xl font-semibold text-white">Email Jonathan Caudill</h2>
-                  </div>
-                  <p className="text-gray-300 group-hover:text-white transition-colors">
-                    jonathan.s.caudill@gmail.com
-                  </p>
-                </div>
-              </a>
+        <main className="py-10">
+          <div className="grid gap-6 md:grid-cols-2">
+            <a
+              href="mailto:jonathan.s.caudill@gmail.com"
+              className="group rounded-none border border-border px-5 py-4 transition-colors hover:bg-muted"
+            >
+              <div className="mb-3 flex items-center gap-3">
+                <Mail className="h-5 w-5 text-primary" />
+                <h2 className="font-ui text-xs uppercase tracking-[0.22em] text-foreground">
+                  Email
+                </h2>
+              </div>
+              <p className="font-serif text-sm text-muted-foreground">
+                jonathan.s.caudill@gmail.com
+              </p>
+            </a>
 
-              <a 
-                href="sms:+6627011626"
-                className="block group relative"
-                onMouseMove={handleMouseMove}
-                style={glowStyle}
-              >
-                <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                  style={{
-                    background: `radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.15) 0%, transparent 80%)`,
-                    transform: `perspective(1000px) rotateX(calc((var(--mouse-y) - 50%) * 0.1deg)) rotateY(calc((var(--mouse-x) - 50%) * 0.1deg))`,
-                  }}
-                />
-                <div className="relative bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 p-6 transition-all duration-300 hover:bg-white/20">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="flex items-center gap-2">
-                      <Phone className="w-6 h-6 text-white" />
-                      <MessageSquare className="w-5 h-5 text-white" />
-                    </div>
-                    <h2 className="text-xl font-semibold text-white">Phone</h2>
-                  </div>
-                  <p className="text-gray-300 group-hover:text-white transition-colors">
-                    (662) 701-1626
-                  </p>
+            <a
+              href="sms:+6627011626"
+              className="group rounded-none border border-border px-5 py-4 transition-colors hover:bg-muted"
+            >
+              <div className="mb-3 flex items-center gap-3">
+                <div className="flex items-center gap-2">
+                  <Phone className="h-5 w-5 text-primary" />
+                  <MessageSquare className="h-4 w-4 text-primary" />
                 </div>
-              </a>
+                <h2 className="font-ui text-xs uppercase tracking-[0.22em] text-foreground">
+                  Phone
+                </h2>
+              </div>
+              <p className="font-serif text-sm text-muted-foreground">(662) 701-1626</p>
+            </a>
 
-              <a 
-                href="https://github.com/jonathancaudill" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="block group relative"
-                onMouseMove={handleMouseMove}
-                style={glowStyle}
-              >
-                <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                  style={{
-                    background: `radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.15) 0%, transparent 80%)`,
-                    transform: `perspective(1000px) rotateX(calc((var(--mouse-y) - 50%) * 0.1deg)) rotateY(calc((var(--mouse-x) - 50%) * 0.1deg))`,
-                  }}
-                />
-                <div className="relative bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 p-6 transition-all duration-300 hover:bg-white/20">
-                  <div className="flex items-center gap-4 mb-4">
-                    <Github className="w-6 h-6 text-white" />
-                    <h2 className="text-xl font-semibold text-white">GitHub</h2>
-                  </div>
-                  <p className="text-gray-300 group-hover:text-white transition-colors">
-                    github.com/jonathancaudill
-                  </p>
-                </div>
-              </a>
+            <a
+              href="https://github.com/jonathancaudill"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group rounded-none border border-border px-5 py-4 transition-colors hover:bg-muted"
+            >
+              <div className="mb-3 flex items-center gap-3">
+                <Github className="h-5 w-5 text-primary" />
+                <h2 className="font-ui text-xs uppercase tracking-[0.22em] text-foreground">
+                  GitHub
+                </h2>
+              </div>
+              <p className="font-serif text-sm text-muted-foreground">
+                github.com/jonathancaudill
+              </p>
+            </a>
 
-              <a 
-                href="https://linkedin.com/in/jonathancaudill" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="block group relative"
-                onMouseMove={handleMouseMove}
-                style={glowStyle}
-              >
-                <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                  style={{
-                    background: `radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.15) 0%, transparent 80%)`,
-                    transform: `perspective(1000px) rotateX(calc((var(--mouse-y) - 50%) * 0.1deg)) rotateY(calc((var(--mouse-x) - 50%) * 0.1deg))`,
-                  }}
-                />
-                <div className="relative bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 p-6 transition-all duration-300 hover:bg-white/20">
-                  <div className="flex items-center gap-4 mb-4">
-                    <Linkedin className="w-6 h-6 text-white" />
-                    <h2 className="text-xl font-semibold text-white">LinkedIn</h2>
-                  </div>
-                  <p className="text-gray-300 group-hover:text-white transition-colors">
-                    linkedin.com/in/jonathancaudill
-                  </p>
-                </div>
-              </a>
-            </div>
+            <a
+              href="https://linkedin.com/in/jonathancaudill"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group rounded-none border border-border px-5 py-4 transition-colors hover:bg-muted"
+            >
+              <div className="mb-3 flex items-center gap-3">
+                <Linkedin className="h-5 w-5 text-primary" />
+                <h2 className="font-ui text-xs uppercase tracking-[0.22em] text-foreground">
+                  LinkedIn
+                </h2>
+              </div>
+              <p className="font-serif text-sm text-muted-foreground">
+                linkedin.com/in/jonathancaudill
+              </p>
+            </a>
           </div>
-        </div>
+        </main>
       </div>
     </>
   );

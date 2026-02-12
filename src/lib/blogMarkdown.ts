@@ -7,7 +7,10 @@ import remarkSlug from 'remark-slug';
 import remarkToc from 'remark-toc';
 
 // Import all markdown files from content/blog
-const blogFiles = import.meta.glob('../content/blog/*.md', { as: 'raw' });
+const blogFiles = import.meta.glob('../content/blog/*.md', {
+  query: '?raw',
+  import: 'default',
+});
 
 export interface Post {
   title: string;

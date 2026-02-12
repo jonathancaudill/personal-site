@@ -3,8 +3,6 @@ import { getAllPosts, Post } from "@/lib/blogMarkdown";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import { Link } from "react-router-dom";
-import GradientBackground from "@/components/GradientBackground";
-import { format } from "date-fns";
 import BlogCard from "@/components/BlogCard";
 import SEOHead from "@/components/SEOHead";
 
@@ -43,48 +41,46 @@ const Writing = () => {
         url="/writing"
         type="website"
       />
-      <div className="relative min-h-screen">
-        <GradientBackground />
-        <div className="relative">
-          <div className="container max-w-5xl mx-auto px-4 py-12 pt-24">
-            <h1 className="text-4xl font-bold mb-8 text-white">Jonathan Caudill's Writing</h1>
-            <p className="text-gray-300 mb-8">
-              Thoughts, musings, essays, and writings.
-            </p>
-
-            {/* Search bar */}
-            <div className="relative mb-8">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-              <Input
-                type="text"
-                placeholder="Search articles..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/50"
-              />
-            </div>
-
-            <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {isLoading ? (
-                <div className="col-span-full text-center text-gray-300">Loading posts...</div>
-              ) : filteredPosts.length > 0 ? (
-                filteredPosts.map((post) => (
-                  <Link 
-                    key={post.slug} 
-                    to={`/writing/${post.slug}`}
-                    className="group block h-full"
-                  >
-                    <BlogCard post={post} />
-                  </Link>
-                ))
-              ) : (
-                <div className="col-span-full text-center text-gray-300">
-                  {searchQuery ? 'No posts found matching your search.' : 'No posts available.'}
-                </div>
-              )}
-            </div>
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <header className="border-b border-border pb-10 pt-4">
+          <p className="text-xs font-ui uppercase tracking-[0.22em] text-muted-foreground">
+            Writing
+          </p>
+          <h1 className="mt-3 font-display text-4xl leading-tight text-foreground sm:text-5xl">
+            Essays, notes, and experiments.
+          </h1>
+          <p className="mt-4 max-w-2xl font-serif text-base leading-relaxed text-muted-foreground">
+            Working notes in public: part lab notebook, part essay collection.
+          </p>
+          <div className="relative mt-6 max-w-md">
+            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <Input
+              type="text"
+              placeholder="Search by title or summary…"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="h-10 rounded-none border-border pl-9 font-ui text-sm"
+            />
           </div>
-        </div>
+        </header>
+
+        <main className="py-10">
+          {isLoading ? (
+            <div className="text-center text-sm text-muted-foreground">Loading posts…</div>
+          ) : filteredPosts.length > 0 ? (
+            <div className="grid gap-8 md:grid-cols-2">
+              {filteredPosts.map((post) => (
+                <Link key={post.slug} to={`/writing/${post.slug}`} className="group block h-full">
+                  <BlogCard post={post} />
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center text-sm text-muted-foreground">
+              {searchQuery ? "No posts found matching your search." : "No posts available."}
+            </div>
+          )}
+        </main>
       </div>
     </>
   );

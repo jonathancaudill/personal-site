@@ -6,7 +6,10 @@ import remarkSlug from 'remark-slug';
 import remarkToc from 'remark-toc';
 
 // Import all markdown files from content/projects
-const projectFiles = import.meta.glob('../content/projects/*.md', { as: 'raw' });
+const projectFiles = import.meta.glob('../content/projects/*.md', {
+  query: '?raw',
+  import: 'default',
+});
 
 export interface Project {
   title: string;
